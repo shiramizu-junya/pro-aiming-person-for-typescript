@@ -1,4 +1,5 @@
 "use strict";
+// import { mainModule } from 'process';
 /*
  * 3.1.1
  */
@@ -402,3 +403,32 @@
 /*
  * 3.7.1
  */
+// const date = new Date();
+// console.log(date.getMonth());
+// const r = /ab+c/;
+// console.log(r.test('ac'));
+// console.log('Hello, abbbbbc wold abbc'.replace(/ab+c/g, 'foobar'));
+/*
+ * 3.7.2
+ */
+// const result = 'Hello, abbbbbc world abc'.match(/a(?<worldName>b+)c/g);
+// if(result)
+//     console.log(result);
+/*
+ * 3.7.4
+ */
+// const map: Map<string, number> = new Map();
+// console.log(map);
+// map.set('foo', 1234);
+// map.set('bar', 100);
+// console.log(map.get('foo'));
+// map.set(100, 'hoge');
+// console.log(map.entries());
+/*
+ * 3.7.5
+ */
+// type HasLength = { length: number }
+// const obj: HasLength = 'foo';
+let val = 100;
+val = true;
+// val = null;
