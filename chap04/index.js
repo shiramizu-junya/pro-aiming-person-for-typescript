@@ -193,3 +193,89 @@
 // const double: UnaryFunc = (arg) => arg * 2;
 // const add: BinaryFunc = (left, right) => left + right;
 // const bin: BinaryFunc = double;
+/*
+ * 4.4.1
+ */
+// function repeat<T>(element: T, length: number): T[] {
+//     const result: T[] = [];
+//     for (let i = 0; i < length; i++) {
+//         result.push(element);
+//     }
+//     return result;
+// }
+// console.log(repeat<string>('a', 5));
+// console.log(repeat<number>(120, 3));
+/*
+ * 4.4.2
+ */
+// 関数式のジェネリクス型
+// const repeat = function<T>(element: T, length: number): T[] {
+//     const result: T[] = [];
+//     for (let i = 0; i < length; i++) {
+//         result.push(element);
+//     }
+//     return result;
+// }
+// アロー関数のジェネリクス型
+// const repeat = <T>(element: T, length: number): T[] => {
+//     const result: T[] = [];
+//     for (let i = 0; i < length; i++) {
+//         result.push(element);
+//     }
+//     return result;
+// }
+// メソッド記法のジェネリクス型
+// const utils = {
+//     repeat<T>(element: T, length: number): T[] {
+//         const result: T[] = [];
+//         for (let i = 0; i < length; i++) {
+//             result.push(element);
+//         }
+//         return result;
+//     }
+// }
+// const repeat = <T extends { name: string }>(element: T, length: number): T[] => {
+// 	const result: T[] = [];
+// 	for (let i = 0; i < length; i++) {
+// 		result.push(element);
+// 	}
+// 	return result;
+// };
+// type HasNameAndAge = {
+//     name: string;
+//     age: number;
+// }
+// console.log(repeat<HasNameAndAge>({ name: 'uhyo', age: 10 }, 3)); // > [{ name: 'uhyo', age: 10 }, { name: 'uhyo', age: 10 }, { name: 'uhyo', age: 10 }]
+/*
+ * 4.4.3
+ */
+// function repeat<T>(element: T, length: number): T[] {
+//     const result: T[] = [];
+//     for (let i = 0; i < length; i++) {
+//         result.push(element);
+//     }
+//     return result;
+// }
+// const result = repeat('a', 5);
+/*
+ * 4.4.4
+ */
+// type Func = <T>(element: T, length: number) => T[];
+// const repeat: Func = (element, length) => {
+//     const result = [];
+//     for (let i = 0; i < length; i++) {
+//         result.push(element);
+//     }
+//     return result;
+// }
+/*
+ * 4.5.1
+ */
+// const repeat = function<T>(element: T, length: number): T[] {
+//     const result: T[] = [];
+//     for (let i = 0; i < length; i++) {
+//         result.push(element);
+//     }
+//     return result;
+// }
+// console.log(result);
