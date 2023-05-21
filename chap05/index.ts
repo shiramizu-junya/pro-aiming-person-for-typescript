@@ -2,8 +2,6 @@
  *
  */
 
-import { type } from "os";
-
 // ----------------------------------
 //
 // ----------------------------------
@@ -320,33 +318,282 @@ import { type } from "os";
 // console.log(uhyo instanceof User);
 // console.log({} instanceof User);
 
-type HasAge = {
-    age: number;
-}
+// type HasAge = {
+//     age: number;
+// }
 
-class User {
-    name: string;
-    age: number;
+// class User {
+//     name: string;
+//     age: number;
 
-    constructor(name: string, age: number) {
-        this.name = name;
-        this.age = age;
-    }
-}
+//     constructor(name: string, age: number) {
+//         this.name = name;
+//         this.age = age;
+//     }
+// }
 
-function getPrice(customer: HasAge) {
-    if (customer instanceof User) {
-        if (customer.name === 'uhyo') {
-            return 0;
-        }
-    }
-    return customer.age < 18 ? 1000 : 1800;
-}
+// function getPrice(customer: HasAge) {
+//     if (customer instanceof User) {
+//         if (customer.name === 'uhyo') {
+//             return 0;
+//         }
+//     }
+//     return customer.age < 18 ? 1000 : 1800;
+// }
 
-const customer1: HasAge = { age: 15 };
-const customer2: HasAge = { age: 40 };
-const uhyo = new User('uhyo', 26);
+// const customer1: HasAge = { age: 15 };
+// const customer2: HasAge = { age: 40 };
+// const uhyo = new User('uhyo', 26);
 
-console.log(getPrice(customer1));
-console.log(getPrice(customer2));
-console.log(getPrice(uhyo));
+// console.log(getPrice(customer1));
+// console.log(getPrice(customer2));
+// console.log(getPrice(uhyo));
+
+/*
+ * 5.3.1
+ */
+// class User {
+//     name: string;
+//     #age: number;
+
+//     constructor(name: string, age: number) {
+//         this.name = name;
+//         this.#age = age;
+//     }
+
+//     public isAdult(): boolean {
+//         return this.#age >= 20;
+//     }
+// }
+
+// class PremiumUser extends User {
+//     rank: number = 1;
+// }
+
+// const uhyo = new PremiumUser('uhyo', 30);
+// console.log(uhyo.rank);
+// console.log(uhyo.name);
+// console.log(uhyo.isAdult());
+
+/*
+ * 5.3.2
+ */
+// class User {
+// 	name: string;
+// 	#age: number;
+
+// 	constructor(name: string, age: number) {
+// 		this.name = name;
+// 		this.#age = age;
+// 	}
+
+// 	public isAdult(): boolean {
+// 		return this.#age >= 20;
+// 	}
+// }
+
+// class PremiumUser extends User {
+//     rank: number = 1;
+
+//     constructor(name: string, age: number, rank: number) {
+//         super(name, age);
+//         this.rank = rank;
+//     }
+
+//     public isAdult(): boolean {
+//         return true;
+//     }
+// }
+
+// const john = new User('john', 10);
+// const uhyo = new PremiumUser('uhyo', 30, 5);
+// console.log(uhyo.name);
+// console.log(uhyo.rank);
+
+/*
+ * 5.3.3
+ */
+// class User {
+// 	name: string;
+// 	#age: number;
+
+// 	constructor(name: string, age: number) {
+// 		this.name = name;
+// 		this.#age = age;
+// 	}
+
+// 	public isAdult(): boolean {
+// 		return this.#age >= 20;
+// 	}
+// }
+
+// class PremiumUser extends User {
+//     rank: number = 1;
+
+//     public override isAdult(): boolean {
+//         return true;
+//     }
+// }
+
+/*
+ * 5.3.4
+ */
+// class User {
+// 	name: string;
+// 	protected age: number;
+
+// 	constructor(name: string, age: number) {
+// 		this.name = name;
+// 		this.age = age;
+// 	}
+
+// 	public isAdult(): boolean {
+// 		return this.age >= 20;
+// 	}
+// }
+
+// class PremiumUser extends User {
+//     rank: number = 1;
+
+//     public isAdult(): boolean {
+//         return this.age >= 10;
+//     }
+// }
+
+/*
+ * 5.3.5
+ */
+// type HasName = {
+//     name: string;
+// }
+
+// class User implements HasName {
+// 	name: string;
+// 	#age: number;
+
+//     constructor(name: string, age: number) {
+//         this.name = name;
+//         this.#age = age;
+//     }
+
+//     public isAdult(): boolean {
+//         return this.#age >= 20;
+//     }
+// }
+
+/*
+ * 5.4.1
+ */
+// class User {
+// 	name: string;
+// 	#age: number;
+
+// 	constructor(name: string, age: number) {
+// 		this.name = name;
+// 		this.#age = age;
+// 	}
+
+//     public isAdult(): boolean {
+//         console.log(this);
+// 		return this.#age >= 20;
+// 	}
+// }
+// const uhyo = new User('uhyo', 25);
+// const john = new User('john', 15);
+// console.log(uhyo.isAdult());
+// console.log(uhyo.isAdult === john.isAdult);
+// const isAdult = uhyo.isAdult;
+// console.log(isAdult());
+
+/*
+ * 5.4.2
+ */
+// class User {
+// 	name: string;
+// 	#age: number;
+
+// 	constructor(name: string, age: number) {
+// 		this.name = name;
+// 		this.#age = age;
+// 	}
+
+// 	public isAdult(): boolean {
+// 		console.log(this);
+// 		return this.#age >= 20;
+//     }
+
+//     public filterOlder(user: readonly User[]): User[] {
+//         return user.filter(u => u.#age > this.#age);
+//     }
+// }
+
+// const uhyo = new User('uhyo', 25);
+// const john = new User('john', 15);
+// const bob = new User('bob', 40);
+
+// const older = uhyo.filterOlder([john, bob]);
+// console.log(older);
+
+/*
+ * 5.4.3
+ */
+// class User {
+// 	name: string;
+// 	#age: number;
+
+// 	constructor(name: string, age: number) {
+// 		this.name = name;
+// 		this.#age = age;
+// 	}
+
+// 	public isAdult(): boolean {
+// 		console.log(this);
+// 		return this.#age >= 20;
+//     }
+// }
+
+// const uhyo = new User('uhyo', 25);
+// const john = new User('john', 15);
+
+// console.log(uhyo.isAdult());
+// console.log(uhyo.isAdult.apply(john, []));
+
+/*
+ * 5.4.4
+ */
+// class A {
+//     foo = 123;
+//     bar = this.foo + 100;
+// }
+// const obj = new A();
+// console.log(obj.bar);
+
+/*
+ * 5.5.1
+ */
+// console.log('エラーを発生させます');
+// throwError();
+// console.log('エラーを発生させました');
+
+// function throwError() {
+//     const error = new Error('エラーが発生しました');
+//     throw error;
+// }
+
+/*
+ * 5.5.2
+ */
+// try {
+// 	console.log('エラーを発生させます');
+// 	throwError();
+// 	console.log('エラーを発生させました');
+// } catch(err) {
+//     console.log('エラーをキャッチしました');
+//     console.log(err);
+// }
+// console.log('終わり');
+
+// function throwError() {
+// 	const error = new Error('エラーが発生しました');
+// 	throw error;
+// }
